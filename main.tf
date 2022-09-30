@@ -102,6 +102,7 @@ resource "random_pet" "cbd" {
     instance_types = join(",", local.ng.instance_types)
     ami_type       = local.ng.ami_type
     capacity_type  = local.ng.capacity_type
+    disk_size      = local.ng.disk_size
 
     launch_template_id = local.launch_template_id
   }
