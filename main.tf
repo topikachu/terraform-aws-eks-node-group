@@ -78,6 +78,7 @@ locals {
     taints          = var.kubernetes_taints
     release_version = local.launch_template_ami == "" ? try(var.ami_release_version[0], null) : null
     version         = length(compact(concat([local.launch_template_ami], var.ami_release_version))) == 0 ? try(var.kubernetes_version[0], null) : null
+    disk_size       = var.disk_size
 
     tags = local.node_group_tags
 
@@ -133,6 +134,8 @@ resource "aws_eks_node_group" "default" {
   version         = local.ng.version
 
   capacity_type = local.ng.capacity_type
+
+  disk_size     = local.ng.disk_size
 
   tags = local.ng.tags
 
@@ -212,6 +215,8 @@ resource "aws_eks_node_group" "cbd" {
   version         = local.ng.version
 
   capacity_type = local.ng.capacity_type
+
+  disk_size     = local.ng.disk_size
 
   tags = local.ng.tags
 

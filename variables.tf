@@ -419,3 +419,9 @@ variable "detailed_monitoring_enabled" {
   default     = false
   description = "The launched EC2 instance will have detailed monitoring enabled. Defaults to false"
 }
+
+variable "disk_size" {
+  type       = number
+  default    = null
+  description = "Disk size in GiB for worker nodes. Defaults to 20. Terraform will only perform drift detection if a configuration value is provided."
+}
